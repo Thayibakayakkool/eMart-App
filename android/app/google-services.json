@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "795812657084",
+    "project_id": "login-firebase-21e71",
+    "storage_bucket": "login-firebase-21e71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795812657084:android:961f45a529278b55d69db9",
+        "android_client_info": {
+          "package_name": "thayiba.com.flutter_ecommerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHZHVqwRfhmFRZ6-zhIwnVsYBpMPaH8Gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
