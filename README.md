@@ -19,7 +19,7 @@
 <img src="https://github.com/Thayibakayakkool/Ecommerce-eMart-App/assets/147040960/7490274f-e03d-4922-95c7-badfec6e8c96" width="200" height="400">
 </r>
 
-## Add To Cart Screen & Payment Screen
+## Cart Screen & Order Screen
 <r>
 <img src="https://github.com/Thayibakayakkool/Ecommerce-eMart-App/assets/147040960/f6ea17bf-88b8-45af-b30d-a9c9179f07cc" width="200" height="400">
 <img src="https://github.com/Thayibakayakkool/Ecommerce-eMart-App/assets/147040960/ab5ef4ce-3459-450e-821c-619259553d09" width="200" height="400">
