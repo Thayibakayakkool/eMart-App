@@ -20,20 +20,22 @@ class RatingScreens extends StatelessWidget {
           size: size,
         ));
       } else if (i == realNumber) {
-        starList.add(SizedBox(
-          height: size,
-          width: size,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Icon(Icons.star, color: Colors.amber.shade600, size: size),
-              ClipRect(
-                clipper: Clipper(part: partNumber),
-                child: Icon(Icons.star, color: Colors.grey, size: size),
-              )
-            ],
+        starList.add(
+          SizedBox(
+            height: size,
+            width: size,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Icon(Icons.star, color: Colors.amber.shade600, size: size),
+                ClipRect(
+                  clipper: Clipper(part: partNumber),
+                  child: Icon(Icons.star, color: Colors.grey, size: size),
+                )
+              ],
+            ),
           ),
-        ));
+        );
       } else {
         starList.add(Icon(Icons.star, color: Colors.grey, size: size));
       }

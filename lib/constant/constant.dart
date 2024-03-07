@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
+const tealColor = Colors.teal;
 final appColors = Colors.teal[900];
 const whiteColors = Colors.white;
+const blackColor = Colors.black;
+final grey600 = Colors.grey[600];
+final teal600=Colors.teal[600];
+final grey700=Colors.grey[700];
+const transparent=Colors.transparent;
+
 const loggedIn = "Logged in successfully";
 const loggedout = "Logged out successfully";
 
-Image googleIcons = Image.network(
-    'https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-128.png');
-Image facebookIcons = Image.network(
-    'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_facebook-128.png');
-Image twitterIcons = Image.network(
-    'https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_twitter-128.png');
 
 const List brandsList = [
   'https://imgs.search.brave.com/36UMIdKzINEVbs8CFN4xKA0U9IsA6CwoN7_sQ_8DdGM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zc2xp/bWFnZXMuc2hvcHBl/cnNzdG9wLmNvbS9z/eXMtbWFzdGVyL3Jv/b3QvaDlmL2hiNy8z/MDk0MTYwMTAwNTU5/OC9qdW5pcGVyLS0t/Y2Fyb3VzZWwtV2Vi/LS1vZmZlci1wYWdl/LS0yMDIzLTA5LTIw/LmpwZw',
@@ -76,17 +77,6 @@ const paymentMethodsImg = [
 
 const paymentMethods = ["GPay", "Paytm", "Cash on Delivery"];
 
-final colors = [
-  Colors.purple,
-  Colors.pink,
-  Colors.green,
-  Colors.orange,
-  Colors.red,
-  Colors.blue,
-  Colors.teal,
-  Colors.amber,
-  Colors.black
-];
 
 const todayCategory = [
   'https://i.pinimg.com/474x/00/6b/be/006bbe7ac2704c299d13deeffcfd6c9a.jpg',
@@ -134,8 +124,8 @@ const flashCategory = [
   'https://img.tatacliq.com/images/i8/1316Wx1468H/MP000000015336041_1316Wx1468H_202211200251322.jpeg',
   'https://blingvine.com/cdn/shop/products/katherine-pearl-necklace-set-necklace-sets-blingvine-852602_750x.jpg?v=1642122450',
   'https://www.tiesta.in/cdn/shop/products/WhatsAppImage2021-09-20at5.16.49PM_6_-Copy.jpg?v=1648721128',
-  'https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71ccqB-VKZL._SL1100_.jpg',
-  'https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/318BrVXRmUL._AC_UF1000,1000_QL80_.jpg',
+  'https://yourdesignstore.s3.amazonaws.com/uploads/yds/productImages/full/1629717737612384e9619ceYDS_Product_4@2x.jpg',
+  'https://5.imimg.com/data5/SELLER/Default/2022/3/CP/JL/QT/127392265/swiss-beauty-oil-control-compact-powder-500x500.jpg',
   'https://static5.lenskart.com/media/catalog/product/pro/1/thumbnail/628x301/9df78eab33525d08d6e5fb8d27136e95//v/i/vincent-chase-vc-s13137-c4-c4-sunglasses_g_8693.jpg',
   'https://www.evok.in/media/catalog/product/f/o/fooclcfbmtbu12684m_1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=340&width=336&canvas=336:340',
 ];

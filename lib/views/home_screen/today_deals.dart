@@ -10,48 +10,53 @@ class TodayDeals extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-              padding: const EdgeInsets.all(12),
-              child: GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 10,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                    mainAxisExtent: 220),
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 10,
+            padding: const EdgeInsets.all(12),
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 10,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  mainAxisExtent: 220),
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Image.network(
+                      todayCategory[index],
+                      width: 150,
+                      height: 150,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      todayCategoryName[index],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: blackColor,
                       ),
-                      Image.network(
-                        todayCategory[index],
-                        width: 150,
-                        height: 150,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "₹ ${todayCategoryRate[index]}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: appColors,
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        todayCategoryName[index],
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "₹ ${todayCategoryRate[index]}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: appColors),
-                      ),
-                    ],
-                  );
-                },
-              )),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );

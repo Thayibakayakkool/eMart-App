@@ -20,13 +20,16 @@ class OrderDetails extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: blackColor,
           ),
         ),
         backgroundColor: whiteColors,
         title: const Text(
           'Order Details',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: blackColor,
+          ),
         ),
       ),
       body: Padding(
@@ -60,8 +63,9 @@ class OrderDetails extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.grey)),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                ),
                 child: Column(
                   children: [
                     orderPlaceDetails(
@@ -116,8 +120,9 @@ class OrderDetails extends StatelessWidget {
                                 Text(
                                   "${data['total_amount']}",
                                   style: TextStyle(
-                                      color: appColors,
-                                      fontWeight: FontWeight.bold),
+                                    color: appColors,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -134,15 +139,19 @@ class OrderDetails extends StatelessWidget {
               ),
               const Text(
                 'Ordered Products',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 10,
               ),
               Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.grey)),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                ),
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,

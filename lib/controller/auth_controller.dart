@@ -3,8 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/constant/firebase_constant.dart';
 import 'package:flutter_ecommerce_app/constant/utils.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends ChangeNotifier {
+  var emailController = TextEditingController();
+
   Future<UserCredential?> loginMethod({email, password, context}) async {
     UserCredential? userCredential;
     try {
@@ -51,6 +54,29 @@ class AuthController extends ChangeNotifier {
       await auth.signOut();
     } on FirebaseAuthException catch (e) {
       String output = e.message.toString();
+    }
+  }
+
+  Future passwordReset(context) async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
+      notifyListeners();
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text('Password reset link sent! Check your email'),
+            );
+          });
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
     }
   }
 }

@@ -13,9 +13,17 @@ class ShippingDetails extends StatelessWidget {
     final cartController = Provider.of<CartController>(context);
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: whiteColors,
+            )),
         title: const Text(
           'Shipping Info',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: whiteColors),
         ),
       ),
       bottomNavigationBar: SizedBox(
@@ -31,12 +39,12 @@ class ShippingDetails extends StatelessWidget {
                   context: context, content: 'Please fill the form');
             }
           },
+          style:
+              ButtonStyle(backgroundColor: MaterialStatePropertyAll(appColors)),
           child: const Text(
             "Continue",
             style: TextStyle(color: whiteColors),
           ),
-          style:
-              ButtonStyle(backgroundColor: MaterialStatePropertyAll(appColors)),
         ),
       ),
       body: Padding(
@@ -53,11 +61,11 @@ class ShippingDetails extends StatelessWidget {
                   hintText: 'Address',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),
@@ -73,11 +81,11 @@ class ShippingDetails extends StatelessWidget {
                   hintText: 'City',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),
@@ -93,11 +101,11 @@ class ShippingDetails extends StatelessWidget {
                   hintText: 'State',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),
@@ -114,11 +122,11 @@ class ShippingDetails extends StatelessWidget {
                   hintText: 'Postal Code',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),
@@ -136,11 +144,11 @@ class ShippingDetails extends StatelessWidget {
                   hintText: 'Phone',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                 ),

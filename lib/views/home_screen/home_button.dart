@@ -63,10 +63,11 @@ class HomeButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Image.network(
-                        'https://cdn3.iconfinder.com/data/icons/strokeline/128/21_icons-128.png')),
+                  height: 50,
+                  width: 50,
+                  child: Image.network(
+                      'https://cdn3.iconfinder.com/data/icons/strokeline/128/21_icons-128.png'),
+                ),
                 const SizedBox(
                   height: 5,
                 ),

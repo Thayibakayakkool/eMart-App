@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/constant/constant.dart';
 import 'package:flutter_ecommerce_app/constant/utils.dart';
 import 'package:flutter_ecommerce_app/controller/auth_controller.dart';
+import 'package:flutter_ecommerce_app/views/auth_screen/forgot_password_screen.dart';
 import 'package:flutter_ecommerce_app/views/auth_screen/signup_screen.dart';
 import 'package:flutter_ecommerce_app/views/home_screen/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
 
   @override
   Widget build(BuildContext context) {
-    final authController=Provider.of<AuthController>(context);
+    final authController = Provider.of<AuthController>(context);
     return Container(
       width: 380,
       decoration: BoxDecoration(
@@ -49,11 +50,11 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
                 hintText: 'E-Mail',
                 hintStyle: TextStyle(fontSize: 18, color: appColors),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                  borderSide: const BorderSide(color: tealColor, width: 2),
                   borderRadius: BorderRadius.circular(22),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black),
+                  borderSide: const BorderSide(color: blackColor),
                   borderRadius: BorderRadius.circular(22),
                 ),
               ),
@@ -70,11 +71,11 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
                   hintText: 'Password',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   suffixIcon: IconButton(
@@ -95,10 +96,20 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
             ),
           ),
           TextButton(
-              onPressed: () {},
-              child: const Align(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ForgotPasswordPage(),
+                    ));
+              },
+              child: Align(
                   alignment: Alignment.centerRight,
-                  child: Text('Forgot password?'))),
+                  child: Text(
+                    'Forgot password?',
+                    style: TextStyle(
+                        color: appColors, fontStyle: FontStyle.italic),
+                  ))),
           SizedBox(
             width: 350,
             child: isLoading
@@ -124,12 +135,12 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
                         }
                       });
                     },
-                    child: const Text(
-                      'Log In',
-                      style: TextStyle(fontSize: 18),
-                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors),
+                    ),
+                    child: const Text(
+                      'Log In',
+                      style: TextStyle(fontSize: 18, color: whiteColors),
                     ),
                   ),
           ),
@@ -138,7 +149,7 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
           ),
           Text(
             'Create a new Account',
-            style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+            style: TextStyle(fontSize: 16, color: grey700),
           ),
           const SizedBox(
             height: 5,
@@ -151,46 +162,18 @@ class _TextFieldWidgetLogInState extends State<TextFieldWidgetLogIn> {
                   builder: (context) => const SignUpScreen(),
                 ));
               },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(teal600),
+              ),
               child: const Text(
                 'Sign Up',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal[600]),
+                style: TextStyle(fontSize: 18, color: whiteColors),
               ),
             ),
           ),
+
           const SizedBox(
-            height: 5,
-          ),
-          Text(
-            'Log in with',
-            style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(height: 40, child: facebookIcons),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(height: 40, child: googleIcons),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(height: 40, child: twitterIcons),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
+            height: 15,
           ),
         ],
       ),

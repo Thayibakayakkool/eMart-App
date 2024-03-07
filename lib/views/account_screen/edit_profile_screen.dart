@@ -20,8 +20,18 @@ class EditProfileScreen extends StatelessWidget {
     passwordController.text = data['password'];
 
     return Scaffold(
+      backgroundColor: appColors,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: whiteColors,
+          ),
+        ),
         backgroundColor: appColors,
       ),
       body: Container(
@@ -41,21 +51,21 @@ class EditProfileScreen extends StatelessWidget {
                 data['imageUrl'] == '' &&
                         profileController.profileImagePath.isEmpty
                     ? const CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(
-                          'https://as2.ftcdn.net/v2/jpg/03/38/17/69/1000_F_338176982_maA8pB6ZEZyyTz1SYSRwYoFRdgH0gu8J.jpg'),
-                    )
+                        radius: 50,
+                        backgroundImage: NetworkImage(
+                            'https://as2.ftcdn.net/v2/jpg/03/38/17/69/1000_F_338176982_maA8pB6ZEZyyTz1SYSRwYoFRdgH0gu8J.jpg'),
+                      )
                     : data['imageUrl'] != '' &&
                             profileController.profileImagePath.isEmpty
                         ? CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(data['imageUrl']),
-                        )
+                            radius: 50,
+                            backgroundImage: NetworkImage(data['imageUrl']),
+                          )
                         : CircleAvatar(
-                          radius: 50,
-                          backgroundImage: FileImage(
-                              File(profileController.profileImagePath)),
-                        ),
+                            radius: 50,
+                            backgroundImage: FileImage(
+                                File(profileController.profileImagePath)),
+                          ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -63,14 +73,13 @@ class EditProfileScreen extends StatelessWidget {
                   onPressed: () {
                     profileController.changeImage(context);
                   },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(appColors),
+                  ),
                   child: const Text(
                     'Change',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(appColors),
+                        fontWeight: FontWeight.bold, color: whiteColors),
                   ),
                 ),
                 const Divider(),
@@ -88,11 +97,11 @@ class EditProfileScreen extends StatelessWidget {
                       hintStyle: TextStyle(fontSize: 18, color: appColors),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(color: Colors.teal, width: 2),
+                            const BorderSide(color: tealColor, width: 2),
                         borderRadius: BorderRadius.circular(22),
                       ),
                       border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black),
+                        borderSide: const BorderSide(color: blackColor),
                         borderRadius: BorderRadius.circular(22),
                       ),
                     ),
@@ -110,11 +119,11 @@ class EditProfileScreen extends StatelessWidget {
                       hintStyle: TextStyle(fontSize: 18, color: appColors),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(color: Colors.teal, width: 2),
+                            const BorderSide(color: tealColor, width: 2),
                         borderRadius: BorderRadius.circular(22),
                       ),
                       border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black),
+                        borderSide: const BorderSide(color: blackColor),
                         borderRadius: BorderRadius.circular(22),
                       ),
                     ),
@@ -123,35 +132,29 @@ class EditProfileScreen extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                profileController.isLoading
-                    ? CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(appColors),
-                      )
-                    : SizedBox(
-                        width: 300,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            profileController.isLoading = true;
-                            await profileController.uploadProfileImage();
-                            await profileController.updateProfile(
-                                imageUrl: profileController.profileImageLink,
-                                name: nameController.text,
-                                password: passwordController.text);
-                            Utils().showSnackBars(
-                                context: context, content: "Updated");
-                          },
-                          child: const Text(
-                            'Save',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(appColors),
-                          ),
-                        ),
-                      ),
+                SizedBox(
+                  width: 300,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await profileController.uploadProfileImage();
+                      await profileController.updateProfile(
+                          imageUrl: profileController.profileImageLink,
+                          name: nameController.text,
+                          password: passwordController.text);
+                      Navigator.pop(context);
+                      Utils()
+                          .showSnackBars(context: context, content: "Updated");
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(appColors),
+                    ),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: whiteColors),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

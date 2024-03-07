@@ -19,13 +19,13 @@ class PaymentMethods extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: blackColor,
           ),
         ),
         backgroundColor: whiteColors,
         title: const Text(
           "Choose Payment Method",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontWeight: FontWeight.bold, color: blackColor),
         ),
       ),
       bottomNavigationBar: SizedBox(
@@ -48,71 +48,78 @@ class PaymentMethods extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const BottomNavigationBars()));
                 },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(appColors)),
                 child: const Text(
                   "Place my order",
                   style: TextStyle(color: whiteColors),
                 ),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(appColors)),
               ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
-            children: List.generate(paymentMethodsImg.length, (index) {
-          return GestureDetector(
-            onTap: () {
-              cartController.changePaymentIndex(index);
+          children: List.generate(
+            paymentMethodsImg.length,
+            (index) {
+              return GestureDetector(
+                onTap: () {
+                  cartController.changePaymentIndex(index);
+                },
+                child: Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: cartController.paymentIndex == index
+                            ? tealColor
+                            : transparent,
+                        width: 4,
+                      )),
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      Image.network(
+                        paymentMethodsImg[index],
+                        width: double.infinity,
+                        height: 120,
+                        colorBlendMode: cartController.paymentIndex == index
+                            ? BlendMode.darken
+                            : BlendMode.color,
+                        color: cartController.paymentIndex == index
+                            ? Colors.black.withOpacity(0.4)
+                            : Colors.transparent,
+                        fit: BoxFit.cover,
+                      ),
+                      cartController.paymentIndex == index
+                          ? Transform.scale(
+                              scale: 1.3,
+                              child: Checkbox(
+                                  activeColor: Colors.green,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                  value: true,
+                                  onChanged: (value) {}),
+                            )
+                          : Container(),
+                      Positioned(
+                          bottom: 10,
+                          right: 10,
+                          child: Text(
+                            paymentMethods[index],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ))
+                    ],
+                  ),
+                ),
+              );
             },
-            child: Container(
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: cartController.paymentIndex == index
-                          ? Colors.teal
-                          : Colors.transparent,
-                      width: 4,
-                    )),
-                margin: const EdgeInsets.only(bottom: 8),
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Image.network(
-                      paymentMethodsImg[index],
-                      width: double.infinity,
-                      height: 120,
-                      colorBlendMode: cartController.paymentIndex == index
-                          ? BlendMode.darken
-                          : BlendMode.color,
-                      color: cartController.paymentIndex == index
-                          ? Colors.black.withOpacity(0.4)
-                          : Colors.transparent,
-                      fit: BoxFit.cover,
-                    ),
-                    cartController.paymentIndex == index
-                        ? Transform.scale(
-                            scale: 1.3,
-                            child: Checkbox(
-                                activeColor: Colors.green,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)),
-                                value: true,
-                                onChanged: (value) {}),
-                          )
-                        : Container(),
-                    Positioned(
-                        bottom: 10,
-                        right: 10,
-                        child: Text(
-                          paymentMethods[index],
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ))
-                  ],
-                )),
-          );
-        })),
+          ),
+        ),
       ),
     );
   }

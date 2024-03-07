@@ -4,7 +4,7 @@ import 'package:flutter_ecommerce_app/views/Categories_screen/categories_screen.
 import 'package:flutter_ecommerce_app/views/account_screen/account_screen.dart';
 import 'package:flutter_ecommerce_app/views/cart_screen/cart_screen.dart';
 import 'package:flutter_ecommerce_app/views/home_screen/home_screen.dart';
-import 'package:flutter_ecommerce_app/views/sell_screen/product_screen.dart';
+// import 'package:flutter_ecommerce_app/views/admin_panel/admin_screen.dart';
 
 class BottomNavigationBars extends StatefulWidget {
   const BottomNavigationBars({super.key});
@@ -40,13 +40,13 @@ class _BottomNavigationBarsState extends State<BottomNavigationBars> {
             size: 30,
           ),
           label: "Cart"),
-      BottomNavigationBarItem(
-          icon: Icon(
-            Icons.sell,
-            color: appColors,
-            size: 30,
-          ),
-          label: "Sell"),
+      // BottomNavigationBarItem(
+      //     icon: Icon(
+      //       Icons.sell,
+      //       color: appColors,
+      //       size: 30,
+      //     ),
+      //     label: "Admin Panel"),
       BottomNavigationBarItem(
           icon: Icon(
             Icons.person,
@@ -60,32 +60,29 @@ class _BottomNavigationBarsState extends State<BottomNavigationBars> {
       const HomeScreen(),
       const CategoriesScreen(),
       const CartScreen(),
-      const ProductScreen(),
+      // const AdminScreen(),
       const AccountScreen(),
     ];
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: currentIndex,
-          selectedItemColor: appColors,
-          unselectedItemColor: Colors.black,
-          selectedLabelStyle:
-              const TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: whiteColors,
-          items: navbarItems,
-          onTap: (int index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        selectedItemColor: appColors,
+        unselectedItemColor: Colors.black,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: tealColor,
         ),
-        body: Container(
-          child: navBody.elementAt(currentIndex),
-        ),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: whiteColors,
+        items: navbarItems,
+        onTap: (int index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
+      body: Container(
+        child: navBody.elementAt(currentIndex),
       ),
     );
   }

@@ -14,61 +14,75 @@ class CategoriesScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              productController.resetValues();
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: transparent,
+            ),
+          ),
           title: const Text(
             'Categories',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: whiteColors, fontSize: 25),
           ),
         ),
         body: Container(
-            padding: const EdgeInsets.all(12),
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 9,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  mainAxisExtent: 220),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    productController
-                        .getSubCategories(categoriesProductName[index]);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CategoriesDetails(
-                              title: categoriesProductName[index]),
-                        ));
-                  },
-                  child: Container(
-                    color: whiteColors,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 10,
+          padding: const EdgeInsets.all(12),
+          child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 9,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                mainAxisExtent: 220),
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  productController
+                      .getSubCategories(categoriesProductName[index]);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoriesDetails(
+                            title: categoriesProductName[index]),
+                      ));
+                },
+                child: Container(
+                  color: whiteColors,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Image.network(
+                        categoriesProduct[index],
+                        width: 150,
+                        height: 150,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        categoriesProductName[index],
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: blackColor,
                         ),
-                        Image.network(
-                          categoriesProduct[index],
-                          width: 150,
-                          height: 150,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          categoriesProductName[index],
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                );
-              },
-            )),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

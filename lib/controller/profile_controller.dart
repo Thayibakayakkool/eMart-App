@@ -28,15 +28,6 @@ class ProfileController extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _isLoading = false;
-
-  bool get isLoading => _isLoading;
-
-  set isLoading(bool value) {
-    _isLoading = value;
-    notifyListeners();
-  }
-
   changeImage(context) async {
     try {
       final img = await ImagePicker()
@@ -65,6 +56,6 @@ class ProfileController extends ChangeNotifier {
       'password': password,
       'imageUrl': imageUrl,
     }, SetOptions(merge: true));
-    _isLoading = false;
+
   }
 }

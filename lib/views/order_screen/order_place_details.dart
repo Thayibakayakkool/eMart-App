@@ -16,7 +16,10 @@ Widget orderPlaceDetails({title1, title2, d1, d2}) {
             ),
             Text(
               "$d1",
-              style: TextStyle(color: appColors, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: appColors,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

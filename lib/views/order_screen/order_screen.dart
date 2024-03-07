@@ -18,13 +18,16 @@ class OrderScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: blackColor,
           ),
         ),
         backgroundColor: whiteColors,
         title: const Text(
           'My Orders',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: blackColor,
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -49,25 +52,28 @@ class OrderScreen extends StatelessWidget {
                   title: Text(
                     data[index]['order_code'].toString(),
                     style: TextStyle(
-                        color: appColors, fontWeight: FontWeight.bold),
+                      color: appColors,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   subtitle: Text(
                     data[index]['total_amount'].toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   trailing: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OrderDetails(
-                                data: data[index],
-                              ),
-                            ));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                      )),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => OrderDetails(
+                              data: data[index],
+                            ),
+                          ));
+                    },
+                    icon: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                    ),
+                  ),
                 );
               },
             );

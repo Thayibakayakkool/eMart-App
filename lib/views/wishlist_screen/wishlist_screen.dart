@@ -18,13 +18,16 @@ class WishlistScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: blackColor,
           ),
         ),
         backgroundColor: whiteColors,
         title: const Text(
           'My Whislist',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: blackColor,
+          ),
         ),
       ),
       body: StreamBuilder(
@@ -54,12 +57,16 @@ class WishlistScreen extends StatelessWidget {
                         title: Text(
                           "${data[index]['p_name']}",
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                         subtitle: Text(
                           "${data[index]['p_price']}",
                           style: TextStyle(
-                              color: appColors, fontWeight: FontWeight.bold),
+                            color: appColors,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         trailing: IconButton(
                           onPressed: () async {

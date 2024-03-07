@@ -25,100 +25,101 @@ class HomeScreen extends StatelessWidget {
       width: screenSize.width,
       height: screenSize.height,
       child: SafeArea(
-          child: Column(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            height: 60,
-            color: Colors.grey[200],
-            child: TextFormField(
-              controller: homeController.searchController,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    if (homeController.searchController.text.isNotEmpty) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => SearchScreen(
-                          title: homeController.searchController.text,
-                        ),
-                      ));
-                    }
-                  },
-                  icon: const Icon(Icons.search),
-                  color: appColors,
-                ),
-                filled: true,
-                fillColor: whiteColors,
-                hintText: 'Search something...',
-                hintStyle: const TextStyle(color: Colors.grey),
-                focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.teal, width: 2),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: 60,
+              color: Colors.grey[200],
+              child: TextFormField(
+                controller: homeController.searchController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      if (homeController.searchController.text.isNotEmpty) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SearchScreen(
+                            title: homeController.searchController.text,
+                          ),
+                        ));
+                      }
+                    },
+                    icon: const Icon(Icons.search),
+                    color: appColors,
+                  ),
+                  filled: true,
+                  fillColor: whiteColors,
+                  hintText: 'Search something...',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: tealColor, width: 2),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const BrandAdWidget(),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const HomeButton(),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const BrandAdWidget2(),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const HomeButton2(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    width: double.infinity,
-                    decoration: BoxDecoration(color: appColors),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Featured Products',
-                          style: TextStyle(
+            const SizedBox(
+              height: 5,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const BrandAdWidget(),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const HomeButton(),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const BrandAdWidget2(),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const HomeButton2(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      width: double.infinity,
+                      decoration: BoxDecoration(color: appColors),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Featured Products',
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: whiteColors,
-                              fontSize: 17),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SingleChildScrollView(
+                              fontSize: 17,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: FutureBuilder(
-                                future: FirestoreServices.getFeaturedProducts(),
-                                builder: (context,
-                                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: loadingIndicator(),
-                                    );
-                                  } else if (snapshot.data!.docs.isEmpty) {
-                                    return const Center(
-                                        child: Text('No featured products'));
-                                  } else {
-                                    var featuredData = snapshot.data!.docs;
+                              future: FirestoreServices.getFeaturedProducts(),
+                              builder: (context,
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: loadingIndicator(),
+                                  );
+                                } else if (snapshot.data!.docs.isEmpty) {
+                                  return const Center(
+                                      child: Text('No featured products'));
+                                } else {
+                                  var featuredData = snapshot.data!.docs;
 
-                                    return Row(
-                                        children: List.generate(
+                                  return Row(
+                                    children: List.generate(
                                       featuredData.length,
                                       (index) => GestureDetector(
                                         onTap: () {
@@ -154,9 +155,10 @@ class HomeScreen extends StatelessWidget {
                                                   child: Text(
                                                     "${featuredData[index]['p_name']}",
                                                     style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.black),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: blackColor,
+                                                    ),
                                                   ),
                                                 ),
                                                 const SizedBox(
@@ -168,9 +170,10 @@ class HomeScreen extends StatelessWidget {
                                                   child: Text(
                                                     "₹ ${featuredData[index]['p_price']}",
                                                     style: TextStyle(
-                                                        color: appColors,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                      color: appColors,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
                                                 ),
                                                 const SizedBox(
@@ -181,93 +184,100 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                    ));
-                                  }
-                                }))
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const BrandAdWidget3(),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  StreamBuilder(
-                    stream: FirestoreServices.allProducts(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: loadingIndicator(),
-                        );
-                      } else {
-                        var allProductsdata = snapshot.data!.docs;
-                        return GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: allProductsdata.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 8,
-                                  crossAxisSpacing: 8,
-                                  mainAxisExtent: 280),
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ItemDetails(
-                                    title:
-                                        "${allProductsdata[index]['p_name']}",
-                                    data: allProductsdata[index],
-                                  ),
-                                ));
+                                    ),
+                                  );
+                                }
                               },
-                              child: Container(
-                                color: whiteColors,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Image.network(
-                                      allProductsdata[index]['p_imgs'],
-                                      width: 200,
-                                      height: 200,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const BrandAdWidget3(),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    StreamBuilder(
+                      stream: FirestoreServices.allProducts(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: loadingIndicator(),
+                          );
+                        } else {
+                          var allProductsdata = snapshot.data!.docs;
+                          return GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: allProductsdata.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 8,
+                                    crossAxisSpacing: 8,
+                                    mainAxisExtent: 280),
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ItemDetails(
+                                      title:
+                                          "${allProductsdata[index]['p_name']}",
+                                      data: allProductsdata[index],
                                     ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "${allProductsdata[index]['p_name']}",
-                                      style: const TextStyle(
+                                  ));
+                                },
+                                child: Container(
+                                  color: whiteColors,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.network(
+                                        allProductsdata[index]['p_imgs'],
+                                        width: 200,
+                                        height: 200,
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "${allProductsdata[index]['p_name']}",
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "₹ ${allProductsdata[index]['p_price']}",
-                                      style: TextStyle(
+                                          color: blackColor,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "₹ ${allProductsdata[index]['p_price']}",
+                                        style: TextStyle(
                                           color: appColors,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      }
-                    },
-                  )
-                ],
+                              );
+                            },
+                          );
+                        }
+                      },
+                    )
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
-      )),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

@@ -34,7 +34,7 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
 
   @override
   Widget build(BuildContext context) {
-    final authController=Provider.of<AuthController>(context);
+    final authController = Provider.of<AuthController>(context);
     return Container(
       width: 380,
       decoration: BoxDecoration(
@@ -54,11 +54,11 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                 hintText: 'Name',
                 hintStyle: TextStyle(fontSize: 18, color: appColors),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                  borderSide: const BorderSide(color: tealColor, width: 2),
                   borderRadius: BorderRadius.circular(22),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black),
+                  borderSide: const BorderSide(color: blackColor),
                   borderRadius: BorderRadius.circular(22),
                 ),
               ),
@@ -74,11 +74,11 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                 hintText: 'E-Mail',
                 hintStyle: TextStyle(fontSize: 18, color: appColors),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                  borderSide: const BorderSide(color: tealColor, width: 2),
                   borderRadius: BorderRadius.circular(22),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black),
+                  borderSide: const BorderSide(color: blackColor),
                   borderRadius: BorderRadius.circular(22),
                 ),
               ),
@@ -95,11 +95,11 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                   hintText: 'Password',
                   hintStyle: TextStyle(fontSize: 18, color: appColors),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    borderSide: const BorderSide(color: tealColor, width: 2),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: blackColor),
                     borderRadius: BorderRadius.circular(22),
                   ),
                   suffixIcon: IconButton(
@@ -130,11 +130,11 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                 hintText: 'Confirm Password',
                 hintStyle: TextStyle(fontSize: 18, color: appColors),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                  borderSide: const BorderSide(color: tealColor, width: 2),
                   borderRadius: BorderRadius.circular(22),
                 ),
                 border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black),
+                  borderSide: const BorderSide(color: blackColor),
                   borderRadius: BorderRadius.circular(22),
                 ),
               ),
@@ -164,7 +164,7 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                       text: "I agree to the ",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey[600],
+                        color: grey600,
                       )),
                   TextSpan(
                       text: "Terms and Conditions",
@@ -176,7 +176,7 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                       text: " & ",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey[600],
+                        color: grey600,
                       )),
                   TextSpan(
                       text: "Privacy Policy",
@@ -224,13 +224,13 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                         }
                       }
                     },
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(fontSize: 18),
-                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
                           isCheck == true ? appColors : Colors.grey),
+                    ),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(fontSize: 18, color: whiteColors),
                     ),
                   ),
           ),
@@ -249,7 +249,7 @@ class _TextFieldWidgetSignUpState extends State<TextFieldWidgetSignUp> {
                   text: "Already have an Account? ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey[600],
+                    color: grey600,
                   )),
               TextSpan(
                   text: "Log in",

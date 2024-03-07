@@ -14,19 +14,22 @@ class _BrandAdWidget2State extends State<BrandAdWidget2> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onHorizontalDragEnd: (_) {
-          if (currentIndex == (brandsList2.length - 1)) {
-            currentIndex = -1;
-          }
-          setState(() {
-            currentIndex++;
-          });
-        },
-        child: Stack(children: [
+      onHorizontalDragEnd: (_) {
+        if (currentIndex == (brandsList2.length - 1)) {
+          currentIndex = -1;
+        }
+        setState(() {
+          currentIndex++;
+        });
+      },
+      child: Stack(
+        children: [
           Image.network(
             brandsList2[currentIndex],
             width: double.infinity,
-          )
-        ]));
+          ),
+        ],
+      ),
+    );
   }
 }
